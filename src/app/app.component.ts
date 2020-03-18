@@ -48,6 +48,10 @@ export class AppComponent {
         title: "Consulter All Contacts",
         url: "/consulter-all-contact",
         icon: "people-outline"
+      },
+      {
+        title: "Quiter",
+        icon: "exit-outline"
       }
     ];
   }
