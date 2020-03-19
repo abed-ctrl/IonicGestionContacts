@@ -13,6 +13,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { SQLite } from "@ionic-native/sqlite/ngx";
 import { HttpClientModule } from "@angular/common/http";
 import { SQLitePorter } from "@ionic-native/sqlite-porter/ngx";
+import { CallNumber } from "@ionic-native/call-number/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { SQLitePorter } from "@ionic-native/sqlite-porter/ngx";
     SplashScreen,
     SQLite,
     SQLitePorter,
+    CallNumber,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -7,4 +7,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-list>
+    <ion-item lines="inset" *ngFor="let data of Data">
+      <ion-avatar slot="start">
+        <ion-icon size="large" name="person-outline"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{data.nom}} {{data.prenom}}</h2>
+        <h3>{{data.telephone}}</h3>
+        <h3>{{data.email}}</h3>
+        <p>{{data.adresse}}</p>
+      </ion-label>
+
+      <div class="item-note" item-end>
+        <!--<ion-icon
+          name="create"
+          style="zoom:2.0"
+          [routerLink]="['/song/', data.id]"
+        ></ion-icon>-->
+        <ion-icon
+          name="call-outline"
+          style="zoom:2.0"
+          (click)="callContact(data.telephone)"
+        ></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

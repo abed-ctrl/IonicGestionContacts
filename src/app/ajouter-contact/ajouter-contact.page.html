@@ -11,7 +11,7 @@
   <ion-grid>
     <ion-row>
       <ion-col text-center>
-        <form>
+        <form [formGroup]="mainForm" (ngSubmit)="storeData()">
           <ion-item>
             <ion-label floating>
               <ion-icon
@@ -21,7 +21,7 @@
               ></ion-icon>
               Nom
             </ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input formControlName="nom" type="text" required></ion-input>
           </ion-item>
 
           <ion-item>
@@ -33,7 +33,11 @@
               ></ion-icon>
               Prenom
             </ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input
+              formControlName="prenom"
+              type="text"
+              required
+            ></ion-input>
           </ion-item>
 
           <ion-item>
@@ -45,7 +49,11 @@
               ></ion-icon>
               Telephone
             </ion-label>
-            <ion-input type="tel"></ion-input>
+            <ion-input
+              formControlName="telephone"
+              type="tel"
+              required
+            ></ion-input>
           </ion-item>
           <ion-item>
             <ion-label floating>
@@ -56,7 +64,11 @@
               ></ion-icon>
               Email
             </ion-label>
-            <ion-input type="email"></ion-input>
+            <ion-input
+              formControlName="email"
+              type="email"
+              required
+            ></ion-input>
           </ion-item>
 
           <ion-item>
@@ -68,9 +80,13 @@
               ></ion-icon>
               Adresse
             </ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input
+              formControlName="adresse"
+              type="text"
+              required
+            ></ion-input>
           </ion-item>
-          <ion-button expand="block">Block Button</ion-button>
+          <ion-button type="submit" expand="block">Ajouter Contact</ion-button>
         </form>
       </ion-col>
     </ion-row>
