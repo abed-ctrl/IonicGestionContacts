@@ -11,6 +11,7 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 })
 export class AppComponent {
   navigate: any;
+  subscribe: any;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -18,6 +19,16 @@ export class AppComponent {
   ) {
     this.sideMenu();
     this.initializeApp();
+    this.subscribe = this.platform.backButton.subscribeWithPriority(
+      666666,
+      () => {
+        if (this.constructor.name == "AppComponent") {
+          if (window.confirm("Voullez vous Quitter L'application ?")) {
+            navigator["app"].exitApp();
+          }
+        }
+      }
+    );
   }
 
   initializeApp() {
