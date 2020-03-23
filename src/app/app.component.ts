@@ -19,16 +19,7 @@ export class AppComponent {
   ) {
     this.sideMenu();
     this.initializeApp();
-    this.subscribe = this.platform.backButton.subscribeWithPriority(
-      666666,
-      () => {
-        if (this.constructor.name == "AppComponent") {
-          if (window.confirm("Voullez vous Quitter L'application ?")) {
-            navigator["app"].exitApp();
-          }
-        }
-      }
-    );
+    this.exit();
   }
 
   initializeApp() {
@@ -59,11 +50,24 @@ export class AppComponent {
         title: "Consulter All Contacts",
         url: "/consulter-all-contact",
         icon: "people-outline"
-      },
-      {
-        title: "Quiter",
-        icon: "exit-outline"
       }
     ];
+  }
+
+  sofexit() {
+    navigator["app"].exitApp();
+  }
+
+  exit() {
+    this.subscribe = this.platform.backButton.subscribeWithPriority(
+      666666,
+      () => {
+        if (this.constructor.name == "AppComponent") {
+          if (window.confirm("Voullez vous Quitter L'application ?")) {
+            navigator["app"].exitApp();
+          }
+        }
+      }
+    );
   }
 }
