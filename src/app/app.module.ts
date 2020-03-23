@@ -14,6 +14,8 @@ import { SQLite } from "@ionic-native/sqlite/ngx";
 import { HttpClientModule } from "@angular/common/http";
 import { SQLitePorter } from "@ionic-native/sqlite-porter/ngx";
 import { CallNumber } from "@ionic-native/call-number/ngx";
+import { SMS } from "@ionic-native/sms/ngx";
+import { EmailComposer } from "@ionic-native/email-composer/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +32,8 @@ import { CallNumber } from "@ionic-native/call-number/ngx";
     SQLite,
     SQLitePorter,
     CallNumber,
+    SMS,
+    EmailComposer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -98,11 +98,21 @@ export class DbService {
       .then(res => {
         return {
           id: res.rows.item(0).id,
-          nom: res.rows.item(0).artist_name,
-          prenom: res.rows.item(0).song_name,
+          nom: res.rows.item(0).nom,
+          prenom: res.rows.item(0).prenom,
           telephone: res.rows.item(0).telephone,
           email: res.rows.item(0).email,
           adresse: res.rows.item(0).adresse
+        };
+      })
+      .catch(e => {
+        return {
+          id: -1,
+          nom: "",
+          prenom: "",
+          telephone: "",
+          email: "",
+          adresse: ""
         };
       });
   }
@@ -123,6 +133,9 @@ export class DbService {
       )
       .then(data => {
         this.getContacts();
+      })
+      .catch(e => {
+        return -1;
       });
   }
 

@@ -12,6 +12,7 @@ export class ConsulterContactPopoverComponent implements OnInit {
   ngOnInit() {}
 
   doc() {
+    alert();
     window.open("https://ionicframework.com/docs/v4/", "_blank");
     this.popoverController.dismiss();
   }

@@ -13,12 +13,99 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar
-    placeholder="Entrer Id Contact"
-    inputmode="decimal"
-    type="decimal"
-    (ionChange)="onSearchChange($event)"
-    [debounce]="250"
-    showCancelButton="250"
-  ></ion-searchbar>
+  <ion-card>
+    <ion-card-title class="ion-padding" color="primary"
+      >Recherche</ion-card-title
+    >
+    <ion-card-content>
+      <form [formGroup]="searchForm" (ngSubmit)="searchData()">
+        <ion-item>
+          <ion-label floating>
+            <ion-icon
+              name="key-outline"
+              item-start
+              class="text-primary"
+            ></ion-icon>
+            ID Contact
+          </ion-label>
+          <ion-input formControlName="id" type="number" required></ion-input>
+        </ion-item>
+        <ion-button type="submit" expand="block">Chercher</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-title color="primary" class="ion-padding"
+      >Resultat</ion-card-title
+    >
+    <ion-card-content>
+      <form [formGroup]="editForm" (ngSubmit)="updateData()">
+        <ion-item>
+          <ion-label floating>
+            <ion-icon
+              name="person-outline"
+              item-start
+              class="text-primary"
+            ></ion-icon>
+            Nom
+          </ion-label>
+          <ion-input formControlName="nom" type="text" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>
+            <ion-icon
+              name="person-outline"
+              item-start
+              class="text-primary"
+            ></ion-icon>
+            Prenom
+          </ion-label>
+          <ion-input formControlName="prenom" type="text" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>
+            <ion-icon
+              name="call-outline"
+              item-start
+              class="text-primary"
+            ></ion-icon>
+            Telephone
+          </ion-label>
+          <ion-input
+            formControlName="telephone"
+            type="tel"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>
+            <ion-icon
+              name="mail-outline"
+              item-start
+              class="text-primary"
+            ></ion-icon>
+            Email
+          </ion-label>
+          <ion-input formControlName="email" type="email" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>
+            <ion-icon
+              name="location-outline"
+              item-start
+              class="text-primary"
+            ></ion-icon>
+            Adresse
+          </ion-label>
+          <ion-input formControlName="adresse" type="text" required></ion-input>
+        </ion-item>
+        <ion-button (click)="presentActionSheet()" expand="block">
+          Choisir Action
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

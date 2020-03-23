@@ -8,5 +8,5 @@ CREATE TABLE IF NOT EXISTS contacttable(
 );
 
 INSERT or IGNORE INTO contacttable(id, nom, prenom, telephone, email, adresse) VALUES (1, 'OULD DAOUIA', 'Abdelali', '+212663097316', 'a.oulddaouia@gmail.com', '25 Rue Oued Zem, Casablanca');
-INSERT or IGNORE INTO contacttable(id, nom, prenom, telephone, email, adresse) VALUES (1, 'OULD DAOUIA', 'Abdelali', '+212663097316', 'a.oulddaouia@gmail.com', '25 Rue Oued Zem, Casablanca');
-INSERT or IGNORE INTO contacttable(id, nom, prenom, telephone, email, adresse) VALUES (1, 'OULD DAOUIA', 'Abdelali', '+212663097316', 'a.oulddaouia@gmail.com', '25 Rue Oued Zem, Casablanca');
+INSERT or IGNORE INTO contacttable(id, nom, prenom, telephone, email, adresse) VALUES (2, 'OULD DAOUIA', 'Abdelali', '+212663097316', 'a.oulddaouia@gmail.com', '25 Rue Oued Zem, Casablanca');
+INSERT or IGNORE INTO contacttable(id, nom, prenom, telephone, email, adresse) VALUES (3, 'OULD DAOUIA', 'Abdelali', '+212663097316', 'a.oulddaouia@gmail.com', '25 Rue Oued Zem, Casablanca');
