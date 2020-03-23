@@ -12,4 +12,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-searchbar
+    placeholder="Entrer Id Contact"
+    inputmode="decimal"
+    type="decimal"
+    (ionChange)="onSearchChange($event)"
+    [debounce]="250"
+    showCancelButton="250"
+  ></ion-searchbar>
+</ion-content>
