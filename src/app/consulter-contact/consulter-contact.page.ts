@@ -70,14 +70,13 @@ export class ConsulterContactPage implements OnInit {
                 //intent: '' // send SMS without opening any other app
               }
             };
-            this.sms
-              .send(this.editForm.value.telephone, "", options)
-              .then(res => {
+            this.sms.send(this.editForm.value.telephone, "", options);
+            /*.then(res => {
                 alert("Message sent successfully");
               })
               .catch(err => {
                 alert("Message Failed:" + err);
-              });
+              });*/
           }
         },
         {
