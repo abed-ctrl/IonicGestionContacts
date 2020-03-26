@@ -1,14 +1,15 @@
 import { Component, OnInit } from "@angular/core";
-import { PopoverController, ActionSheetController } from "@ionic/angular";
-import { ConsulterContactPopoverComponent } from "../consulter-contact-popover/consulter-contact-popover.component";
+import { ActionSheetController } from "@ionic/angular";
+
 import { DbService } from "../services/db.service";
-import { Router } from "@angular/router";
+
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ToastController } from "@ionic/angular";
-import { async } from "@angular/core/testing";
+
 import { CallNumber } from "@ionic-native/call-number/ngx";
 import { SMS } from "@ionic-native/sms/ngx";
 import { EmailComposer } from "@ionic-native/email-composer/ngx";
+import { AndroidPermissions } from "@ionic-native/android-permissions/ngx";
 
 @Component({
   selector: "app-consulter-contact",
@@ -22,13 +23,13 @@ export class ConsulterContactPage implements OnInit {
   id: any = -1;
 
   constructor(
-    public popoverController: PopoverController,
     private db: DbService,
     private callNumber: CallNumber,
     private sms: SMS,
     private emailComposer: EmailComposer,
     private toast: ToastController,
     private formBuilder: FormBuilder,
+    private androidPermissions: AndroidPermissions,
     private actionSheetController: ActionSheetController
   ) {}
 
@@ -62,13 +63,26 @@ export class ConsulterContactPage implements OnInit {
           text: "SMS",
           icon: "chatbox-ellipses-outline",
           handler: () => {
-            this.sms.hasPermission();
+            var options = {
+              replaceLineBreaks: false, // true to replace \n by a new line, false by default
+              android: {
+                intent: "INTENT" // send SMS with the native android SMS messaging
+                //intent: '' // send SMS without opening any other app
+              }
+            };
+            this.sms
+              .send(this.editForm.value.telephone, "", options)
+              .then(res => {
+                alert("Message sent successfully");
+              })
+              .catch(err => {
+                alert("Message Failed:" + err);
+              });
           }
         },
         {
           text: "Email",
           icon: "mail-outline",
-          role: "cancel",
           handler: () => {
             this.emailComposer.isAvailable().then((available: boolean) => {
               if (available) {
@@ -77,18 +91,7 @@ export class ConsulterContactPage implements OnInit {
             });
 
             let email = {
-              to: "max@mustermann.de",
-              cc: "erika@mustermann.de",
-              bcc: ["john@doe.com", "jane@doe.com"],
-              attachments: [
-                "file://img/logo.png",
-                "res://icon.png",
-                "base64:icon.png//iVBORw0KGgoAAAANSUhEUg...",
-                "file://README.pdf"
-              ],
-              subject: "Cordova Icons",
-              body: "How are you? Nice greetings from Leipzig",
-              isHtml: true
+              to: this.editForm.value.email
             };
 
             // Send a text message using default options
@@ -99,15 +102,6 @@ export class ConsulterContactPage implements OnInit {
       ]
     });
     await actionSheet.present();
-  }
-
-  async presentPopover(ev: any) {
-    const popover = await this.popoverController.create({
-      component: ConsulterContactPopoverComponent,
-      event: ev,
-      translucent: false
-    });
-    return await popover.present();
   }
 
   ngOnInit() {

@@ -16,6 +16,7 @@ import { SQLitePorter } from "@ionic-native/sqlite-porter/ngx";
 import { CallNumber } from "@ionic-native/call-number/ngx";
 import { SMS } from "@ionic-native/sms/ngx";
 import { EmailComposer } from "@ionic-native/email-composer/ngx";
+import { AndroidPermissions } from "@ionic-native/android-permissions/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { EmailComposer } from "@ionic-native/email-composer/ngx";
     SQLitePorter,
     CallNumber,
     SMS,
+    AndroidPermissions,
     EmailComposer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
